@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Ecommerce </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  
+
+  <body>
+    <form id="prdFrm" action="http://localhost:5000/insert" method="POST"
+                   enctype="multipart/form-data">
+      Product ID: <input type="number" name="_id" ><br>
+      Product Name: <input type="text" name="Name" ><br>
+      Product Price:<input type="number" name="Price"><br>
+      Product Brand: <input type="text" name="brand" ><br>
+      Product Model: <input type="text" name="model" ><br>
+      Product Color: <input type="text" name="color" ><br>
+      Product Details: <input type="text" name="details"><br>
+      Product weight: <input type="number" name="weight"><br>
+      Product Date: <input type="datetime" name="date"><br>
+      Product Quantity: <input type="number" name="Quantity"><br>
+      Product Image: <input type="file" name="Image" size="50" /><br>
+      <input type="submit" value="Add">
+    </form>
+
+</body>
+</html>

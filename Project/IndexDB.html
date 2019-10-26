@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Ecommerce</title>
+  <meta charset="utf-8">
+  <meta name="viewport">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.js"></script> 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket=io.connect('http://localhost:5000/');
+  </script>
+  <style>
+    td
+    {
+      text-align: center;
+    }
+  </style>
+</head>  
+  <body>
+     
+     <button id="insert">Add new product</button>
+     <!--button id="buy" onclick="buy(1)">Buy</button-->
+     <table id="example" class="display" style="width:100%">
+      <thead>
+          <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th>Image</th>
+              <th>Delete</th>
+              <th>Edit</th>
+              <th>Quantity To Buy</th>
+              <th>Buy</th>
+          </tr>
+      </thead>
+      <tbody>
+         
+      </tbody>
+    </table>
+     
+    <script>
+
+      var socket=io.connect('http://localhost:5000/');
+      $(document).ready(function(){
+       
+        $.get('http://localhost:5000/getProducts',function(data){
+          var jsonResult=JSON.parse(data);
+          console.log(jsonResult);
+
+          displayUser(jsonResult);
+        });
+       
+       
+     
+       function displayUser(p)
+                {  
+                   $("tbody").html(" ");
+                    var ind=0;
+                    var user=p;
+                    var str= `<tr>
+                                <td >${user[ind]._id}</td>
+                                <td >${user[ind].Name}</td>
+                                <td >${user[ind].Price}</td>
+                                <td id="Quant${user[ind]._id}"> ${user[ind].Quantity}</td>
+                                <td ><img style="width:100%;" src="Images/${user[ind].Image}"/></td>
+                                <td ><a style='text-decoration:none' href="http://localhost:5000/delete/${user[ind]._id}"><i class="fa fa-user-times"></i></a></td>
+                                <td ><a style='text-decoration:none' href="/edit/${user[ind]._id}"><i class="fa fa-edit"></i></a></td>
+                                <td> <input type="number" id="${user[ind]._id}" name="QuantityTOBuy"></td>
+                                <td > <button onclick="buy(${user[ind]._id})">buy</button></td>
+                                </tr>
+                                `;
+                    
+                    for(var i=1 ;i<user.length;i++)
+                    {  str+=`<tr>
+                          <td >${user[i]._id}</td>
+                          <td >${user[i].Name}</td>
+                          <td >${user[i].Price}</td>
+                          <td id="Quant${user[i]._id}"> ${user[i].Quantity}</td>
+                          <td ><img style="width:100%;" src="Images/${user[i].Image}"/></td>
+                          <td ><a style='text-decoration:none' href="http://localhost:5000/delete/${user[i]._id}"><i class="fa fa-user-times"></i></a></td>
+                          <td ><a style='text-decoration:none' href="http://localhost:5000/edit/${user[i]._id}"><i class="fa fa-edit"></i></a></td>     
+                          <td> <input type="number" id="${user[i]._id}" name="QuantityTOBuy"></td>
+                          <td ><button onclick="buy(${user[i]._id})">buy</button></td>
+                          </tr>
+                          `;
+
+
+                      $("tbody").html(" ");
+                      $("tbody").append(str);
+                    }
+                  //   var btn= $('<button id="buy">Buy</button>').on('click',function(){
+                  //     console.log($('.QuantityTOBuy').val());
+                  //     socket.emit("update",)
+                  //  })
+                  //  $(".btn1").append(btn); 
+                } 
+
+                    $('#example').DataTable();
+         
+        $("#insert").click(function(){
+          location.replace('http://localhost:5000/add')
+        });
+       // console.log($("#insert"));
+       // console.log($("#buy"));
+       // document.getElementById("buy").onclick(function(){
+       //   console.log(1);
+       //   console.log($('#QuantityTOBuy').val());
+       // });  
+       
+      });
+      function buy(id){
+        var InputQuantity=$(`#${id}`).val();
+        console.log(InputQuantity);
+        socket.emit("Buy",id,InputQuantity);
+       } 
+      
+       socket.on('updateDone',function(id,Quantity){
+         console.log(id);
+         console.log(Quantity);
+         document.getElementById(`Quant${id}`).innerHTML=Quantity;
+       });
+  </script>
+</body>
+</html>

@@ -7,13 +7,29 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.8/socket.io.js"></script> 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <!-- <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"> -->
+  <!-- <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script> -->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
   <script src="/socket.io/socket.io.js"></script>
   <script>
     var socket=io.connect('http://localhost:5000/');
   </script>
   <style>
+    th
+    {
+      text-align: center;
+    }
     td
     {
       text-align: center;
@@ -21,17 +37,19 @@
   </style>
 </head>  
   <body>
-     
-     <button id="insert">Add new product</button>
+     <br>
+     <button id="insert" class="btn btn-primary">Add new product</button>
+     <br>
+     <br>
      <!--button id="buy" onclick="buy(1)">Buy</button-->
-     <table id="example" class="display" style="width:100%">
-      <thead>
+     <table id="example" class="table table-hover table-striped" style="width:100%">
+      <thead class="table-primary">
           <tr>
               <th>ID</th>
               <th>Name</th>
               <th>Price</th>
               <th>Quantity</th>
-              <th>Image</th>
+              <th >Image</th>
               <th>Delete</th>
               <th>Edit</th>
               <th>Quantity To Buy</th>
@@ -41,6 +59,11 @@
       <tbody>
          
       </tbody>
+      <tfoot class="table-primary">
+        <tr >
+          <th colspan="9">End of products</th>
+        </tr>
+      </tfoot>
     </table>
      
     <script>
@@ -63,15 +86,15 @@
                     var ind=0;
                     var user=p;
                     var str= `<tr>
-                                <td >${user[ind]._id}</td>
-                                <td >${user[ind].Name}</td>
-                                <td >${user[ind].Price}</td>
-                                <td id="Quant${user[ind]._id}"> ${user[ind].Quantity}</td>
-                                <td ><img style="width:100%;" src="Images/${user[ind].Image}"/></td>
-                                <td ><a style='text-decoration:none' href="http://localhost:5000/delete/${user[ind]._id}"><i class="fa fa-user-times"></i></a></td>
-                                <td ><a style='text-decoration:none' href="/edit/${user[ind]._id}"><i class="fa fa-edit"></i></a></td>
-                                <td> <input type="number" id="${user[ind]._id}" name="QuantityTOBuy"></td>
-                                <td > <button onclick="buy(${user[ind]._id})">buy</button></td>
+                                <td width="10%">${user[ind]._id}</td>
+                                <td width="15%">${user[ind].Name}</td>
+                                <td width="10%">${user[ind].Price}</td>
+                                <td width="10%" id="Quant${user[ind]._id}"> ${user[ind].Quantity}</td>
+                                <td  width="15%"><img style="width:100%;" height="100%" src="Images/${user[ind].Image}"/></td>
+                                <td width="10%"><a style='text-decoration:none' href="http://localhost:5000/delete/${user[ind]._id}"><i class="fa fa-user-times"></i></a></td>
+                                <td width="10%"><a style='text-decoration:none' href="/edit/${user[ind]._id}"><i class="fa fa-edit"></i></a></td>
+                                <td width="10%"> <input type="number" id="${user[ind]._id}" name="QuantityTOBuy"></td>
+                                <td width="10%"> <button class="btn btn-primary" onclick="buy(${user[ind]._id})">buy</button></td>
                                 </tr>
                                 `;
                     
@@ -81,11 +104,11 @@
                           <td >${user[i].Name}</td>
                           <td >${user[i].Price}</td>
                           <td id="Quant${user[i]._id}"> ${user[i].Quantity}</td>
-                          <td ><img style="width:100%;" src="Images/${user[i].Image}"/></td>
+                          <td width="15%"><img style="width:100%;" height="100%" src="Images/${user[i].Image}"/></td>
                           <td ><a style='text-decoration:none' href="http://localhost:5000/delete/${user[i]._id}"><i class="fa fa-user-times"></i></a></td>
                           <td ><a style='text-decoration:none' href="http://localhost:5000/edit/${user[i]._id}"><i class="fa fa-edit"></i></a></td>     
                           <td> <input type="number" id="${user[i]._id}" name="QuantityTOBuy"></td>
-                          <td ><button onclick="buy(${user[i]._id})">buy</button></td>
+                          <td ><button class="btn btn-primary" onclick="buy(${user[i]._id})">buy</button></td>
                           </tr>
                           `;
 
@@ -100,7 +123,7 @@
                   //  $(".btn1").append(btn); 
                 } 
 
-                    $('#example').DataTable();
+                   // $('#example').DataTable();
          
         $("#insert").click(function(){
           location.replace('http://localhost:5000/add')

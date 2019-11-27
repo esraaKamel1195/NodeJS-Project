@@ -18,6 +18,7 @@ app.use(express.static('Resources'));
 //console.log(__dirname);
 app.use(bodyParser.urlencoded({extended:false}));
 
+app.use(cors({origin: "*"}));
 io.on("connection", function(client){
 
 	client.on("Buy",function(Id,Quantity){
@@ -117,7 +118,7 @@ app.get('/edit/:_id',function(req,res){
            html=`
            <!DOCTYPE html> 
            <head>
-               <title>example edit product</title>
+               <title> Edit Product</title>
            </head>
            <body>
               <form action="http://localhost:5000/update" method="post" enctype="multipart/form-data">

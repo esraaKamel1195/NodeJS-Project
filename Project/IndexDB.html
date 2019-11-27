@@ -38,10 +38,11 @@
 </head>  
   <body>
      <br>
-     <button id="insert" class="btn btn-primary">Add new product</button>
-     <br>
-     <br>
-     <!--button id="buy" onclick="buy(1)">Buy</button-->
+     <div>
+            <button id="insert" class="btn btn-primary">Add new product</button>
+            <br>
+            <br>
+    </div>
      <table id="example" class="table table-hover table-striped" style="width:100%">
       <thead class="table-primary">
           <tr>
@@ -75,40 +76,39 @@
           var jsonResult=JSON.parse(data);
           console.log(jsonResult);
 
-          displayUser(jsonResult);
+          displayProduct(jsonResult);
         });
        
        
      
-       function displayUser(p)
+       function displayProduct(product)
                 {  
                    $("tbody").html(" ");
                     var ind=0;
-                    var user=p;
                     var str= `<tr>
-                                <td width="10%">${user[ind]._id}</td>
-                                <td width="15%">${user[ind].Name}</td>
-                                <td width="10%">${user[ind].Price}</td>
-                                <td width="10%" id="Quant${user[ind]._id}"> ${user[ind].Quantity}</td>
-                                <td  width="15%"><img style="width:100%;" height="100%" src="Images/${user[ind].Image}"/></td>
-                                <td width="10%"><a style='text-decoration:none' href="http://localhost:5000/delete/${user[ind]._id}"><i class="fa fa-user-times"></i></a></td>
-                                <td width="10%"><a style='text-decoration:none' href="/edit/${user[ind]._id}"><i class="fa fa-edit"></i></a></td>
-                                <td width="10%"> <input type="number" id="${user[ind]._id}" name="QuantityTOBuy"></td>
-                                <td width="10%"> <button class="btn btn-primary" onclick="buy(${user[ind]._id})">buy</button></td>
+                                <td width="10%">${product[ind]._id}</td>
+                                <td width="15%">${product[ind].Name}</td>
+                                <td width="10%">${product[ind].Price}</td>
+                                <td width="10%" id="Quant${product[ind]._id}">${product[ind].Quantity}</td>
+                                <td width="15%"><img style="width:100%;" height="100%" src="Images/${product[ind].Image}"/></td>
+                                <td width="7%"><a style='text-decoration:none' href="http://localhost:5000/delete/${product[ind]._id}"><i class="fa fa-user-times"></i></a></td>
+                                <td width="7%"><a style='text-decoration:none' href="/edit/${product[ind]._id}"><i class="fa fa-edit"></i></a></td>
+                                <td width="10%"> <input type="number" min="1" value="1" max="${product[ind].Quantity}" id="${product[ind]._id}" name="QuantityTOBuy"></td>
+                                <td width="10%"> <button class="btn btn-primary" onclick="buy(${product[ind]._id})">Buy</button></td>
                                 </tr>
                                 `;
                     
-                    for(var i=1 ;i<user.length;i++)
+                    for(var i=1 ;i<product.length;i++)
                     {  str+=`<tr>
-                          <td >${user[i]._id}</td>
-                          <td >${user[i].Name}</td>
-                          <td >${user[i].Price}</td>
-                          <td id="Quant${user[i]._id}"> ${user[i].Quantity}</td>
-                          <td width="15%"><img style="width:100%;" height="100%" src="Images/${user[i].Image}"/></td>
-                          <td ><a style='text-decoration:none' href="http://localhost:5000/delete/${user[i]._id}"><i class="fa fa-user-times"></i></a></td>
-                          <td ><a style='text-decoration:none' href="http://localhost:5000/edit/${user[i]._id}"><i class="fa fa-edit"></i></a></td>     
-                          <td> <input type="number" id="${user[i]._id}" name="QuantityTOBuy"></td>
-                          <td ><button class="btn btn-primary" onclick="buy(${user[i]._id})">buy</button></td>
+                          <td >${product[i]._id}</td>
+                          <td >${product[i].Name}</td>
+                          <td >${product[i].Price}</td>
+                          <td id="Quant${product[i]._id}">${product[i].Quantity}</td>
+                          <td width="15%"><img style="width:100%;" height="100%" src="Images/${product[i].Image}"/></td>
+                          <td ><a style='text-decoration:none' href="http://localhost:5000/delete/${product[i]._id}"><i class="fa fa-user-times"></i></a></td>
+                          <td ><a style='text-decoration:none' href="http://localhost:5000/edit/${product[i]._id}"><i class="fa fa-edit"></i></a></td>     
+                          <td width="10%"> <input type="number" min="1" value="1" max="${product[i].Quantity}" id="${product[i]._id}" name="QuantityTOBuy"></td>
+                          <td ><button class="btn btn-primary" onclick="buy(${product[i]._id})">Buy</button></td>
                           </tr>
                           `;
 
@@ -116,11 +116,7 @@
                       $("tbody").html(" ");
                       $("tbody").append(str);
                     }
-                  //   var btn= $('<button id="buy">Buy</button>').on('click',function(){
-                  //     console.log($('.QuantityTOBuy').val());
-                  //     socket.emit("update",)
-                  //  })
-                  //  $(".btn1").append(btn); 
+                  
                 } 
 
                    // $('#example').DataTable();
@@ -128,18 +124,19 @@
         $("#insert").click(function(){
           location.replace('http://localhost:5000/add')
         });
-       // console.log($("#insert"));
-       // console.log($("#buy"));
-       // document.getElementById("buy").onclick(function(){
-       //   console.log(1);
-       //   console.log($('#QuantityTOBuy').val());
-       // });  
+      
        
       });
-      function buy(id){
-        var InputQuantity=$(`#${id}`).val();
-        console.log(InputQuantity);
-        socket.emit("Buy",id,InputQuantity);
+      function buy(id)
+      {
+        var QuantityTOBuy=$(`#${id}`).val();
+       // console.log(QuantityTOBuy);
+        var Quantity=$(`#Quant${id}`).html();
+       // console.log(Quantity);
+        if(parseInt(Quantity)==parseInt(QuantityTOBuy)||parseInt(Quantity)>parseInt(QuantityTOBuy))
+        {
+          socket.emit("Buy",id,QuantityTOBuy);
+        }
        } 
       
        socket.on('updateDone',function(id,Quantity){

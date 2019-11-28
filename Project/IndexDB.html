@@ -25,6 +25,7 @@
   <script>
     var socket=io.connect('http://localhost:5000/');
   </script>
+  
   <style>
     th
     {
@@ -74,7 +75,7 @@
        
         $.get('http://localhost:5000/getProducts',function(data){
           var jsonResult=JSON.parse(data);
-          console.log(jsonResult);
+          //console.log(jsonResult);
 
           displayProduct(jsonResult);
         });
@@ -140,8 +141,8 @@
        } 
       
        socket.on('updateDone',function(id,Quantity){
-         console.log(id);
-         console.log(Quantity);
+        // console.log(id);
+        // console.log(Quantity);
          document.getElementById(`Quant${id}`).innerHTML=Quantity;
        });
   </script>

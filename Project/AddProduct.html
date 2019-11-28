@@ -5,24 +5,59 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
   
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  
+  <!-- Popper JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
   <body>
-    <form id="prdFrm" action="http://localhost:5000/insert" method="POST"
+    <h1 class='text-center alert alert-primary alert-sm font-italic mb-0'>Add New Product</h1>
+    <form id="prdFrm" class="col-md-5 text-body offset-md-4 align-content-center bg-light" action="http://localhost:5000/insert" method="POST"
                    enctype="multipart/form-data">
-      Product ID: <input type="number" name="_id" ><br>
-      Product Name: <input type="text" name="Name" ><br>
-      Product Price:<input type="number" name="Price"><br>
-      Product Brand: <input type="text" name="brand" ><br>
-      Product Model: <input type="text" name="model" ><br>
-      Product Color: <input type="text" name="color" ><br>
-      Product Details: <input type="text" name="details"><br>
-      Product weight: <input type="number" name="weight"><br>
-      Product Date: <input type="datetime" name="date"><br>
-      Product Quantity: <input type="number" name="Quantity"><br>
-      Product Image: <input type="file" name="Image" size="50" /><br>
-      <input type="submit" value="Add">
+      <div class="form-group">
+          <br>
+          <input type="number" name="_id" placeholder="Enter Product ID" class="form-control" style="width:100%;" min="1" required><br>
+      </div>
+      <div class="form-group">
+          <input type="text" name="Name" placeholder="Enter Product Name" class="form-control" style="width:100%;" required><br>
+      </div>
+      <div class="form-group">
+          <input type="number" name="Price" placeholder="Enter Product Price" class="form-control" style="width:100%;" min="1" required><br>
+      </div>
+      <div class="form-group">
+          <input type="text" name="brand" placeholder="Enter Product Brand" class="form-control" style="width:100%;" required><br>
+      </div>
+      <div class="form-group">
+          <input type="text" name="model" placeholder="Enter Product Model" class="form-control" style="width:100%;" required><br>
+      </div>
+      <div class="form-group">
+          <input type="text" name="color" placeholder="Enter Product Color" class="form-control" style="width:100%;" required><br>
+      </div>
+      <div class="form-group">
+          <input type="text" name="details" placeholder="Enter Product Details" class="form-control" style="width:100%;" required><br>
+      </div>
+      <div class="form-group">
+          <input type="number" name="weight" placeholder="Enter Product Weight" class="form-control" style="width:100%;" min="1" required><br>
+      </div>
+      <div class="form-group">
+          <input type="datetime" name="date" placeholder="Enter Product Date" class="form-control" style="width:100%;" required><br>
+      </div>
+      <div class="form-group">
+          <input type="number" name="Quantity" placeholder="Enter Product Quantity" class="form-control" style="width:100%;" required><br>
+      </div>
+      <div class="form-group">
+          <input type="file" name="Image"   placeholder="Enter Product Image" class="form-control-file border" style="width:100%;" size="50" required/><br>
+      </div>
+      <div class="form-group">
+          <input type="submit" value="Add" style="width:100%;" class="btn btn-primary">
+      </div>    
     </form>
-
 </body>
 </html>

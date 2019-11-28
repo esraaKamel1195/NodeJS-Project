@@ -119,32 +119,71 @@ app.get('/edit/:_id',function(req,res){
            <!DOCTYPE html> 
            <head>
                <title> Edit Product</title>
+               <meta charset="utf-8">
+               <meta name="viewport" content="width=device-width, initial-scale=1">
+               <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+               <!-- Latest compiled and minified CSS -->
+               <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+               
+               <!-- jQuery library -->
+               <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+               
+               <!-- Popper JS -->
+               <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+               
+               <!-- Latest compiled JavaScript -->
+               <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
            </head>
            <body>
-              <form action="http://localhost:5000/update" method="post" enctype="multipart/form-data">
-                <label> Product ID:</label>
-                <input type="number" value=${data1[0]._id} name="_id" required readonly><br>
-                <label>Name</label>
-                <input type="text" name="Name" value=${data1[0].Name} required /><br><br>
-                <label>Price</label>
-                <input type="number" name="Price" value=${data1[0].Price} required /><br> <br>
-                <label>Quantity</label>
-                <input type="number" name="Quantity" value=${data1[0].Quantity} required /><br> <br>
-                <label>Image</label>
-                <input type="file" name="Image" value=${data1[0].Image} required /><br> <br>
-                <label>Product Brand:</label>
-                <input type="text" value=${data1[0].brand} name="brand" required><br> <br>
-                <label>Product Model:</label>
-                <input type="text" name="model" value=${data1[0].model} required><br> <br>
-                <label>Product Color:</label>
-                <input type="text" name="color" value=${data1[0].color} required><br><br> 
-                <label>Product Details:</label>
-                <input type="text" name="details" value=${data1[0].details} required><br><br>
-                <label>Product weight:</label>
-                <input type="number" name="weight" value=${data1[0].weight} required><br><br>
-                <label>Product Data:</label>
-                <input type="datetime" name="date" value=${data1[0].date} required><br><br>
-                <input type="submit" value="send" />
+                <h1 class='text-center alert alert-primary alert-sm font-italic mb-0'>Edit Product</h1>
+
+                <form action="http://localhost:5000/update" method="post" class="col-md-5 text-body offset-md-4 align-content-center bg-light"
+                               enctype="multipart/form-data">
+                  <div class="form-group">             
+                    <label> Product ID:</label>
+                    <input type="number" value=${data1[0]._id} class="form-control" name="_id" required readonly>
+                  </div>
+                  <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" name="Name" class="form-control" value=${data1[0].Name} required /><br>
+                  <div class="form-group"> 
+                    <label>Price</label>
+                    <input type="number" name="Price" class="form-control" value=${data1[0].Price} required /><br>
+                  </div>
+                  <div class="form-group">
+                    <label>Quantity</label>
+                    <input type="number" name="Quantity" class="form-control" value=${data1[0].Quantity} required /><br>
+                  <div class="form-group">
+                    <label>Product Brand:</label>
+                    <input type="text" value=${data1[0].brand} class="form-control" name="brand" required><br>
+                  </div>
+                  <div class="form-group">
+                    <label>Product Model:</label>
+                     <input type="text" name="model" class="form-control" value=${data1[0].model} required><br>
+                  </div>
+                  <div class="form-group">   
+                    <label>Product Color:</label>
+                    <input type="text" name="color" class="form-control" value=${data1[0].color} required><br>
+                  </div>
+                  <div class="form-group">  
+                    <label>Product Details:</label>
+                    <input type="text" name="details" class="form-control" value=${data1[0].details} required><br>
+                  </div>
+                  <div class="form-group"> 
+                    <label>Product weight:</label>
+                    <input type="number" name="weight" class="form-control" value=${data1[0].weight} required><br>
+                  </div> 
+                  <div class="form-group"> 
+                    <label>Product Data:</label>
+                    <input type="datetime" name="date" class="form-control" value=${data1[0].date} required><br>
+                  </div>
+                  <div class="form-group">
+                    <label>Image</label>
+                    <input type="file" name="Image" class="form-control" value=${data1[0].Image} required /><br>
+                  </div>
+                  <div class="form-group">  
+                    <input type="submit" value="Edit" style="width:100%;" class="btn btn-primary" /><br>
+                  </div>
               </form>
            </body>
            </html>

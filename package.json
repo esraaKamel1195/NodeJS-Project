@@ -5,7 +5,7 @@
   "main": "node",
   "scripts": {
     "test": "node application.js",
-    "start": "node application.js"
+    "start": "NODE_ENV=production node application.js"
   },
   "keywords": [
     "text",

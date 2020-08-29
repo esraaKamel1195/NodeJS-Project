@@ -7,7 +7,7 @@ class ProductController
 
     connectToDB(){
         let dbPromise= new Promise((resolve, reject) => {
-            let conStr = 'mongodb://localhost:27017/EcommerceProject';
+            let conStr = process.env.MONGODB_URL ||'mongodb://localhost:27017/EcommerceProject';
             this.mongoClient.connect(conStr,{ useNewUrlParser: true },(err, mongoCon) =>{
                 if(err){
                     console.log("Error in connection to DB");

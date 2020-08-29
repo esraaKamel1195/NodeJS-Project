@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "first app",
   "main": "node",
-  "start": "node application.js",
   "scripts": {
-    "test": "node application.js"
+    "test": "node application.js",
+    "start": "node application.js"
   },
   "keywords": [
     "text",

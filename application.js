@@ -1,3 +1,4 @@
+var Port= process.env.Port || 5000;
 var http= require ('http');
 var express = require('express');
 var app = express();
@@ -225,4 +226,4 @@ app.get('/delete/:_id',function(req,res){
         });
 });  
  
-httpserver.listen(5000, function () {});
+httpserver.listen(Port, function () {});

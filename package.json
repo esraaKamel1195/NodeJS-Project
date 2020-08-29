@@ -4,12 +4,12 @@
   "description": "first app",
   "main": "node",
   "scripts": {
-    "test": "node Assignment.js"
+    "test": "node application.js"
   },
   "keywords": [
     "text",
     "node",
-    "Assignment"
+    "application"
   ],
   "author": "esraa",
   "license": "ISC",

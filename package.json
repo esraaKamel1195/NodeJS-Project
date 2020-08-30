@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "first app",
   "main": "node",
+  "NOdE_ENV":"production node application.js",
   "scripts": {
-    "test": "node application.js",
+    "test": "NODE_ENV=production node application.js",
     "start": "NODE_ENV=production node application.js"
   },
   "keywords": [

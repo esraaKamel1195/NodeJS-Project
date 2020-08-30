@@ -23,7 +23,7 @@
 
   <script src="/socket.io/socket.io.js"></script>
   <script>
-    var socket=io.connect('http://localhost:5000/');
+    var socket=io.connect('https://ecommerce-nodejs-project.herokuapp.com/');
   </script>
   
   <style>
@@ -70,10 +70,10 @@
      
     <script>
 
-      var socket=io.connect('http://localhost:5000/');
+      var socket=io.connect('https://ecommerce-nodejs-project.herokuapp.com/');
       $(document).ready(function(){
        
-        $.get('http://localhost:5000/getProducts',function(data){
+        $.get('https://ecommerce-nodejs-project.herokuapp.com/getProducts',function(data){
           var jsonResult=JSON.parse(data);
           //console.log(jsonResult);
 
@@ -92,7 +92,7 @@
                                 <td width="10%">${product[ind].Price}</td>
                                 <td width="10%" id="Quant${product[ind]._id}">${product[ind].Quantity}</td>
                                 <td width="15%"><img style="width:100%;" height="100%" src="Images/${product[ind].Image}"/></td>
-                                <td width="7%"><a style='text-decoration:none' href="http://localhost:5000/delete/${product[ind]._id}"><i class="fa fa-user-times"></i></a></td>
+                                <td width="7%"><a style='text-decoration:none' href="https://ecommerce-nodejs-project.herokuapp.com/delete/${product[ind]._id}"><i class="fa fa-user-times"></i></a></td>
                                 <td width="7%"><a style='text-decoration:none' href="/edit/${product[ind]._id}"><i class="fa fa-edit"></i></a></td>
                                 <td width="10%"> <input type="number" min="1" value="1" max="${product[ind].Quantity}" id="${product[ind]._id}" name="QuantityTOBuy"></td>
                                 <td width="10%"> <button class="btn btn-primary" onclick="buy(${product[ind]._id})">Buy</button></td>
@@ -106,8 +106,8 @@
                           <td >${product[i].Price}</td>
                           <td id="Quant${product[i]._id}">${product[i].Quantity}</td>
                           <td width="15%"><img style="width:100%;" height="100%" src="Images/${product[i].Image}"/></td>
-                          <td ><a style='text-decoration:none' href="http://localhost:5000/delete/${product[i]._id}"><i class="fa fa-user-times"></i></a></td>
-                          <td ><a style='text-decoration:none' href="http://localhost:5000/edit/${product[i]._id}"><i class="fa fa-edit"></i></a></td>     
+                          <td ><a style='text-decoration:none' href="https://ecommerce-nodejs-project.herokuapp.com/delete/${product[i]._id}"><i class="fa fa-user-times"></i></a></td>
+                          <td ><a style='text-decoration:none' href="https://ecommerce-nodejs-project.herokuapp.com//edit/${product[i]._id}"><i class="fa fa-edit"></i></a></td>     
                           <td width="10%"> <input type="number" min="1" value="1" max="${product[i].Quantity}" id="${product[i]._id}" name="QuantityTOBuy"></td>
                           <td ><button class="btn btn-primary" onclick="buy(${product[i]._id})">Buy</button></td>
                           </tr>
@@ -123,7 +123,7 @@
                    // $('#example').DataTable();
          
         $("#insert").click(function(){
-          location.replace('http://localhost:5000/add')
+          location.replace('https://ecommerce-nodejs-project.herokuapp.com/add')
         });
       
        

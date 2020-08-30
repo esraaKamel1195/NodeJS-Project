@@ -4,9 +4,13 @@
   "description": "first app",
   "main": "node",
   "NOdE_ENV": "production node application.js",
+  "engines": {
+    "node": "12.x",
+    "npm": "6.x"
+  },
   "scripts": {
-    "test": "node application.js",
-    "start": "node application.js"
+    "start": "node application.js",
+    "build": "webpack"
   },
   "keywords": [
     "text",

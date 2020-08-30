@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "description": "first app",
   "main": "node",
-  "NOdE_ENV":"production node application.js",
+  "NOdE_ENV": "production node application.js",
   "scripts": {
-    "test": "NODE_ENV=production node application.js",
-    "start": "NODE_ENV=production node application.js"
+    "test": "node application.js",
+    "start": "node application.js"
   },
   "keywords": [
     "text",

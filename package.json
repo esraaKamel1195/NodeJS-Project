@@ -9,7 +9,9 @@
     "npm": "6.x"
   },
   "scripts": {
-    "start": "node application.js"
+    "start": "node application.js",
+    "build": "ng build",
+    "heroku-postbuild": "ng build --prod"
   },
   "keywords": [
     "text",

@@ -138,7 +138,7 @@ app.get('/edit/:_id',function(req,res){
            <body>
                 <h1 class='text-center alert alert-primary alert-sm font-italic mb-0'>Edit Product</h1>
 
-                <form action="http://localhost:5000/update" method="post" class="col-md-5 text-body offset-md-4 align-content-center bg-light"
+                <form action="https://ecommerce-nodejs-project.herokuapp.com/update" method="post" class="col-md-5 text-body offset-md-4 align-content-center bg-light"
                                enctype="multipart/form-data">
                   <div class="form-group">             
                     <label> Product ID:</label>

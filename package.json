@@ -19,9 +19,9 @@
   "author": "esraa",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.19.1",
+    "body-parser": "^1.20.1",
     "cors": "^2.8.5",
-    "express": "^4.17.2",
+    "express": "^4.18.2",
     "json-parser": "^3.1.2",
     "mongodb": "^3.7.3",
     "multer": "^1.4.4",
